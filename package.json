@@ -16,7 +16,6 @@
   "dependencies": {
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
-    "heroku": "^7.21.0",
     "mongoose": "^5.4.11"
   }
 }
