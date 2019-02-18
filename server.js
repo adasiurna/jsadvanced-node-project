@@ -1,12 +1,13 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 
 // const moment = require('moment');
 // moment.locale('lt');
 
 const app = express();
-const port = process.env.PORT || 3000; // process.env.PORT vietoje atsiras heroku portas
+const port = 2000; // process.env.PORT vietoje atsiras heroku portas // process.env.PORT || 3000;
 
 const databaseUser = 'Ada';
 const databasePassword = 'asiu0419';
@@ -17,7 +18,7 @@ const carsRoutes = require('./routes/cars');
 const stationsRoutes = require('./routes/stations');
 
 
-// app.use(cors());
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true,
@@ -25,9 +26,9 @@ app.use(bodyParser.urlencoded({
 );
 
 // cors config
-// app.get('/products/:id', function (req, res, next) {
-//   res.json({ msg: 'This is CORS-enabled for all origins!' })
-// })
+app.get('/products/:id', function (req, res, next) {
+  res.json({ msg: 'This is CORS-enabled for all origins!' })
+})
 
 
 // database config
