@@ -17,13 +17,15 @@ const databasePort = 21895;
 const carsRoutes = require('./routes/cars');
 const stationsRoutes = require('./routes/stations');
 
-
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true,
 })
 );
+
+// auth0 
+// app.use(jwtCheck);
 
 // cors config
 app.get('/products/:id', function (req, res, next) {

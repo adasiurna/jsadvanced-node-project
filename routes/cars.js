@@ -2,13 +2,13 @@ const express = require('express');
 const router = express.Router();
 // const moment = require('moment');
 const Car = require('../models/cars');
-
+const { checkJwt, userScopes, adminScopes } = require('../src/helpers/auth.js');  // eksportuojam kaip objekta ir pasiimama kaip objekta
 // moment.locale('lt');
 
 router.get('/', (req, res) => {
   console.log('konsole: Grazinam visus automobilius');
 
-  Car.find({}).exec((error, cars) => {
+  Car.find(req.query).exec((error, cars) => {
     if (error) {
       res.status(500).send(error.message);
     } else {
@@ -19,7 +19,8 @@ router.get('/', (req, res) => {
 });  // +++
 
 
-router.get('/mechanic', (req, res) => {
+
+router.get('/mechanic', checkJwt, userScopes, (req, res) => {
   console.log('Grazinam visus mechaninius automobilius');
   Car.find({ isMechanic: true }).exec((error, cars) => {
     if (error) {
@@ -115,6 +116,9 @@ const mapToCar = car => {
     pagaminimo_metai: car.year,
     kuro_tipas: car.fuelType,
     pavaru_deze: car.isMechanic ? 'mechaninė' : 'automatinė',
+    duru_skaicius: car.doorsNumber,
+    keleiviu_skaicius: car.seatsNumber,
+    papildoma_info: car.additionalInfo
   }
 }
 

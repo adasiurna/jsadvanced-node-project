@@ -18,7 +18,10 @@
     "body-parser": "^1.18.3",
     "cors": "^2.8.5",
     "express": "^4.16.4",
+    "express-jwt": "^5.3.1",
+    "express-jwt-authz": "^1.0.0",
     "heroku": "^7.21.0",
+    "jwks-rsa": "^1.4.0",
     "mongoose": "^5.4.11"
   }
 }

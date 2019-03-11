@@ -4,7 +4,7 @@ const Station = require('../models/stations');
 
 router.get('/', (req, res) => {
 
-  Station.find({}).exec((error, stations) => {
+  Station.find(req.query).exec((error, stations) => {
     if (error) {
       res.status(500).send(error.message);
     } else {
@@ -86,9 +86,11 @@ router.delete('/:id', (req, res) => {
 
 const mapToStation = (station) => {
   return {
+    id: station.id,
     pavadinimas: station.name,
     miestas: station.city,
-    kontaktai: `${station.adress}, ${station.phone}`,
+    adresas: station.adress,
+    telefonas: station.phone,
     darbo_laikas: station.workingTime
   }
 };
