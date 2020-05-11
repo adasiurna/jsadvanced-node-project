@@ -22,6 +22,6 @@
     "express-jwt-authz": "^1.0.0",
     "heroku": "^7.21.0",
     "jwks-rsa": "^1.4.0",
-    "mongoose": "^5.4.11"
+    "mongoose": "^5.7.5"
   }
 }
